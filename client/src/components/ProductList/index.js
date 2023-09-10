@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
+import Slider from 'react-slick';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
@@ -42,12 +43,32 @@ function ProductList() {
       (product) => product.category._id === currentCategory
     );
   }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+    ]
+  };
 
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
       {state.products.length ? (
-        <div className="flex-row">
+        <Slider {...settings}>
+          {/*<div className="flex-row">*/}
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
@@ -58,7 +79,8 @@ function ProductList() {
               quantity={product.quantity}
             />
           ))}
-        </div>
+          {/*</div>*/}
+        </Slider>
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}

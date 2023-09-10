@@ -267,7 +267,7 @@ db.once('open', async () => {
       category: categories[6]._id,
       description:
         "Perfect for home workouts and physical therapy, our compact dumbbells provide variable resistance for targeted muscle toning and improved endurance without taking up much space.",
-      image: 'kid-dumbbell.jpg',
+      image: 'kid-dumbbell.png',
       price: 19.99,
       quantity: 50
     },
