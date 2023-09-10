@@ -32,7 +32,6 @@ function handleAbandonedCart(state) {
         method: "POST",
         headers: {
           Authorization: "Basic " + btoa(`api:${apiKey}`)
-          //Authorization: "Basic " + btoa("api:92192609c2e9aa984ba8c3b0e37b4a77-7ca144d2-6c46f346")
         },
         body: new URLSearchParams({
           from: "percivalho@gmail.com",
