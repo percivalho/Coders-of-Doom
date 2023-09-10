@@ -33,8 +33,6 @@ function handleAbandonedCart(state) {
         headers: {
           Authorization: "Basic " + btoa(`api:${apiKey}`)
           //Authorization: "Basic " + btoa("api:92192609c2e9aa984ba8c3b0e37b4a77-7ca144d2-6c46f346")
-          //Authorization: "Basic " + btoa("api:fe7e788608add6fd9445526679caa09f-7ca144d2-9e8ff7a5")
-
         },
         body: new URLSearchParams({
           from: "percivalho@gmail.com",
