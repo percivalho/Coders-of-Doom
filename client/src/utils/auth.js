@@ -11,6 +11,16 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
+  decode(token) {
+    try {
+      const decoded = decode(token);
+      return decoded;
+    } catch (err) {
+      return null;
+    }
+  }
+
+
   isTokenExpired(token) {
     try {
       const decoded = decode(token);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -8,14 +8,51 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
+import { generateEmailTemplate } from '../../utils/emailTemplate';
+
+const apiKey = process.env.REACT_APP_API_KEY;
 
 // TODO: Add a comment describing the functionality of loadStripe
 // Your comment here
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
+let inactivityTimer; // for abondoned Cart
+
+function handleAbandonedCart(state) {
+  if (state.cart.length > 0) {
+    if (Auth.loggedIn()) {
+      console.log("abandoned Cart for 6s")
+      //const token = Auth.getToken();
+      const decoded = Auth.decode(Auth.getToken());
+      console.log(decoded);
+      const emailHTML = generateEmailTemplate(decoded.data.firstName);
+      const apiKey = process.env.REACT_APP_API_KEY;
+      console.log(apiKey);
+      fetch("https://api.mailgun.net/v3/sandbox21b92425d846412fa2024441b9865ea6.mailgun.org/messages", {
+        method: "POST",
+        headers: {
+          //Authorization: "Basic " + btoa(`api:${apiKey}`)
+          Authorization: "Basic " + btoa("api:92192609c2e9aa984ba8c3b0e37b4a77-7ca144d2-6c46f346")
+
+        },
+        body: new URLSearchParams({
+          from: "percivalho@gmail.com",
+          to: decoded.data.email,
+          subject: "🛒 Oops! Did you forget something in your cart?",
+          html: emailHTML
+        })
+      });
+      // Set the flag to true
+      return true;
+    }
+  }
+}
+
+
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [emailSent, setEmailSent] = useState(false);
 
   // TODO: Add a comment describing the functionality of the useEffect hook in this instance
   // Your comment here
@@ -39,6 +76,20 @@ const Cart = () => {
       getCart();
     }
   }, [state.cart.length, dispatch]);
+
+  useEffect(() => {
+    // Start/reset the inactivity timer whenever the cart changes
+    clearTimeout(inactivityTimer);
+    if (!emailSent) { // Only set up the timer if email hasn't been sent
+      inactivityTimer = setTimeout(() => {
+        const flag = handleAbandonedCart(state, emailSent)
+        if (flag == true) {
+          setEmailSent(true);
+        }
+      }, 6000);
+    }
+    return () => clearTimeout(inactivityTimer);
+  }, [state.cart]);
 
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
