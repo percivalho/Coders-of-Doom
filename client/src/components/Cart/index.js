@@ -31,8 +31,9 @@ function handleAbandonedCart(state) {
       fetch("https://api.mailgun.net/v3/sandbox21b92425d846412fa2024441b9865ea6.mailgun.org/messages", {
         method: "POST",
         headers: {
-          //Authorization: "Basic " + btoa(`api:${apiKey}`)
-          Authorization: "Basic " + btoa("api:92192609c2e9aa984ba8c3b0e37b4a77-7ca144d2-6c46f346")
+          Authorization: "Basic " + btoa(`api:${apiKey}`)
+          //Authorization: "Basic " + btoa("api:92192609c2e9aa984ba8c3b0e37b4a77-7ca144d2-6c46f346")
+          //Authorization: "Basic " + btoa("api:fe7e788608add6fd9445526679caa09f-7ca144d2-9e8ff7a5")
 
         },
         body: new URLSearchParams({
