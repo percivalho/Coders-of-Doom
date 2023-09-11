@@ -7,10 +7,11 @@ body {
 }
 
 #gradient-canvas {
-  --gradient-color-1: #6ec3f4;
-  --gradient-color-2: #3a3aff;
-  --gradient-color-3: #ff61ab;
-  --gradient-color-4: #E63946;
+  --gradient-color-1: #000000;
+  --gradient-color-2: #FFFFFF;
+  --gradient-color-3: #333333;
+  --gradient-color-4: #313131;
+  --gradient-color-5: #272626;
 }
 
 
