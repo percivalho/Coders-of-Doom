@@ -18,28 +18,41 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 let inactivityTimer; // for abondoned Cart
 
-function handleAbandonedCart(state) {
+function handleAbandonedCart(state, emailSentRef) {
+  console.log("abandoned Cart for 6s")
   if (state.cart.length > 0) {
     if (Auth.loggedIn()) {
-      console.log("abandoned Cart for 6s")
       //const token = Auth.getToken();
       const decoded = Auth.decode(Auth.getToken());
       console.log(decoded);
       const emailHTML = generateEmailTemplate(decoded.data.firstName);
-      const apiKey = process.env.REACT_APP_API_KEY;
-      console.log(apiKey);
-      fetch("https://api.mailgun.net/v3/sandbox21b92425d846412fa2024441b9865ea6.mailgun.org/messages", {
-        method: "POST",
+
+      const apiKey = process.env.REACT_APP_API_KEY
+      const domain = process.env.REACT_APP_DOMAIN
+      //console.log(apiKey);
+      //console.log(domain);
+      //console.log('API Key:', process.env.REACT_APP_API_KEY);
+      //console.log('Domain:', process.env.REACT_APP_DOMAIN);
+      //fetch(`https://api.mailgun.net/v3/sandboxf08194b8b1ba46a790cf9321784eaf62.mailgun.org/messages`, {
+      fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
+        method: 'POST',
         headers: {
-          Authorization: "Basic " + btoa(`api:${apiKey}`)
+          'Authorization': 'Basic ' + btoa('api:' + apiKey),
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-          from: "percivalho@gmail.com",
+          from: 'jl83950189@gmail.com',
+          //to: 'jl83950189@gmail.com',
           to: decoded.data.email,
           subject: "🛒 Oops! Did you forget something in your cart?",
           html: emailHTML
         })
-      });
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+
       // Set the flag to true
       return true;
     }
