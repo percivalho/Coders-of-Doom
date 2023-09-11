@@ -141,7 +141,7 @@ db.once('open', async () => {
       category: categories[3]._id,
       description:
         'Engineered for all-day wearability, our advanced fitness tracker seamlessly monitors your heart rate, steps, sleep quality, and workout performance, empowering you to reach your health and fitness goals with real-time insights.',
-      image: 'fitness-tracker.jpg',
+      image: 'fitness-tracker.png',
       price: 259.99,
       quantity: 50
     },
@@ -267,7 +267,7 @@ db.once('open', async () => {
       category: categories[6]._id,
       description:
         "Perfect for home workouts and physical therapy, our compact dumbbells provide variable resistance for targeted muscle toning and improved endurance without taking up much space.",
-      image: 'kid-dumbbell.png',
+      image: 'kid-dumbbell.jpg',
       price: 19.99,
       quantity: 50
     },

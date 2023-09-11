@@ -68,7 +68,7 @@ function ProductList() {
       <h2>Our Products:</h2>
       {state.products.length ? (
         <Slider {...settings}>
-          {/*<div className="flex-row">*/}
+        {/*<div className="flex-row">*/}
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
@@ -79,7 +79,7 @@ function ProductList() {
               quantity={product.quantity}
             />
           ))}
-          {/*</div>*/}
+        {/*</div>*/}
         </Slider>
       ) : (
         <h3>You haven't added any products yet!</h3>
