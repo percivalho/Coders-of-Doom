@@ -7,7 +7,7 @@ body {
 }
 
 #gradient-canvas {
-  --gradient-color-1: #000000;
+   --gradient-color-1: #000000;
   --gradient-color-2: #FFFFFF;
   --gradient-color-3: #333333;
   --gradient-color-4: #313131;
@@ -43,6 +43,9 @@ body {
   line-height: 1.5;
   font-size: 16px;
   color: var(--dark);
+}
+header a{
+  color: green;
 }
 
 h1,
