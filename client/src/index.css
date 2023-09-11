@@ -44,9 +44,6 @@ body {
   font-size: 16px;
   color: var(--dark);
 }
-header a{
-  color: green;
-}
 
 h1,
 h2,
@@ -106,7 +103,7 @@ height: 100px;
 }
 
 header a {
-  color: var(--light);
+  color: #ABF688 ;
 }
 
 button {
