@@ -19,11 +19,11 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 let inactivityTimer; // for abondoned Cart
 
 function handleAbandonedCart(state, emailSentRef) {
-  console.log("abandoned Cart for 10s");
   if (state.cart.length > 0) {
     if (Auth.loggedIn()) {
+      console.log("abandoned Cart for 10s");
       const decoded = Auth.decode(Auth.getToken());
-      console.log(decoded);
+      //console.log(decoded);
       const emailHTML = generateEmailTemplate(decoded.data.firstName);
 
       // EmailJS configurations
@@ -31,7 +31,6 @@ function handleAbandonedCart(state, emailSentRef) {
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
       const apikey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-      console.log(emailHTML);
       // Parameters for the template
       const templateParams = {
         from_name: 'Fitness Direct',
