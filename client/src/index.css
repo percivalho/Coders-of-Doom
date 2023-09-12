@@ -8,7 +8,7 @@ body {
 
 #gradient-canvas {
    --gradient-color-1: #000000;
-  --gradient-color-2: #FFFFFF;
+  --gradient-color-2: #b9b9b9;
   --gradient-color-3: #333333;
   --gradient-color-4: #313131;
   --gradient-color-5: #272626;
@@ -20,7 +20,7 @@ body {
   --secondary: #F3A847;
   --tertiary: #B12704;
   --light: #fafafa;
-  --dark: #272f32;
+  --dark: #ABF688;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -216,10 +216,16 @@ input:focus {
 .card {
   width: 100%;
   text-align: center;
+  background-color: white;
 }
 
 .error-text {
   color: var(--error);
+}
+.slick-prev:before, .slick-next:before {
+  color: #ABF688;
+  opacity: none;
+  
 }
 
 @media screen and (max-width: 768px) {
