@@ -19,46 +19,44 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 let inactivityTimer; // for abondoned Cart
 
 function handleAbandonedCart(state, emailSentRef) {
-  console.log("abandoned Cart for 6s")
+  console.log("abandoned Cart for 10s");
   if (state.cart.length > 0) {
     if (Auth.loggedIn()) {
-      //const token = Auth.getToken();
       const decoded = Auth.decode(Auth.getToken());
       console.log(decoded);
       const emailHTML = generateEmailTemplate(decoded.data.firstName);
 
-      const apiKey = process.env.REACT_APP_API_KEY
-      const domain = process.env.REACT_APP_DOMAIN
-      //console.log(apiKey);
-      //console.log(domain);
-      //console.log('API Key:', process.env.REACT_APP_API_KEY);
-      //console.log('Domain:', process.env.REACT_APP_DOMAIN);
-      //fetch(`https://api.mailgun.net/v3/sandboxf08194b8b1ba46a790cf9321784eaf62.mailgun.org/messages`, {
-      fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
+      // EmailJS configurations
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+      const apikey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+      console.log(emailHTML);
+      // Parameters for the template
+      const templateParams = {
+        from_name: 'Fitness Direct',
+        to_name: decoded.data.firstName,
+        to_email: decoded.data.email,
+        firstName: decoded.data.firstName,
+      };
+      const data = {
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: apikey,
+        template_params: templateParams
+      };
+      //console.log(data);
+      fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
+        body: JSON.stringify(data),
         headers: {
-          'Authorization': 'Basic ' + btoa('api:' + apiKey),
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          from: 'jl83950189@gmail.com',
-          //to: 'jl83950189@gmail.com',
-          to: decoded.data.email,
-          subject: "🛒 Oops! Did you forget something in your cart?",
-          html: emailHTML
-        })
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
-
-      // Set the flag to true
+          'Content-Type': 'application/json'
+        }
+      });
       return true;
     }
   }
 }
-
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
@@ -97,7 +95,7 @@ const Cart = () => {
         if (flag == true) {
           setEmailSent(true);
         }
-      }, 6000);
+      }, 10000);
     }
     return () => clearTimeout(inactivityTimer);
   }, [state.cart]);
