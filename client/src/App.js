@@ -18,6 +18,7 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 import Gradient from './utils/Gradient';
+import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -93,6 +94,7 @@ function App() {
                 element={<NoMatch />}
               />
             </Routes>
+            <Footer />
           </StoreProvider>
         </div>
       </Router>
