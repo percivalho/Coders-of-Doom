@@ -17,7 +17,7 @@ body {
 
 :root {
   --primary: #232F3E;
-  --secondary: #F3A847;
+  --secondary: #ABF688;
   --tertiary: #B12704;
   --light: #fafafa;
   --dark: #ABF688;
@@ -217,6 +217,7 @@ input:focus {
   width: 100%;
   text-align: center;
   background-color: white;
+  color: #B12704;
 }
 
 .error-text {
