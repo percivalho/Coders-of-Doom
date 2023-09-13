@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
@@ -10,6 +10,8 @@ import Slider from 'react-slick';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const { currentCategory } = state;
 
@@ -34,6 +36,18 @@ function ProductList() {
     }
   }, [data, loading, dispatch]);
 
+  useEffect(() => {
+    if (searchTerm) {
+      const results = state.products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProducts(results);
+    } else {
+      setFilteredProducts([]);
+    }
+  }, [searchTerm, state.products]);
+
+
   function filterProducts() {
     if (!currentCategory) {
       return state.products;
@@ -43,6 +57,14 @@ function ProductList() {
       (product) => product.category._id === currentCategory
     );
   }
+
+  const getSlidesToShow = (productCount) => {
+    if (productCount <= 2) {
+      return productCount;
+    }
+    return 3;
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -63,29 +85,61 @@ function ProductList() {
     ]
   };
 
+  const searchSettings = {
+    ...settings,
+    slidesToShow: getSlidesToShow(filteredProducts.length),
+  };
+
   return (
     <div className="my-2">
-      <h2>Our Products:</h2>
+      <input
+        className="search-input"
+        type="text"
+        placeholder="Search through our collection..."
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+      />
+
+      {/* Display Search Results */}
+      {filteredProducts.length > 0 && (
+        <div>
+          <h2>Search Results:</h2>
+          <Slider {...searchSettings}>
+            {filteredProducts.map(product => (
+              <ProductItem
+                key={product._id}
+                _id={product._id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            ))}
+          </Slider>
+        </div>
+      )}
+      <h2>Exclusive Product Range:</h2>
       {state.products.length ? (
         <Slider {...settings}>
-        {/*<div className="flex-row">*/}
           {filterProducts().map((product) => (
-            <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-            />
+            <div key={product._id}>
+              < ProductItem
+                key={product._id}
+                _id={product._id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            </div>
           ))}
-        {/*</div>*/}
         </Slider>
       ) : (
         <h3>You haven't added any products yet!</h3>
-      )}
+      )
+      }
       {loading ? <img src={spinner} alt="loading" /> : null}
-    </div>
+    </div >
   );
 }
 
