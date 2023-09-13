@@ -17,20 +17,18 @@ function CategoryMenu() {
 
   useEffect(() => {
     if (categoryData) {
-      let sortedCategories = [...categoryData.categories].sort((a, b) => a._id - b._id);
       dispatch({
         type: UPDATE_CATEGORIES,
-        categories: sortedCategories,
+        categories: categoryData.categories,
       });
-      sortedCategories.forEach((category) => {
+      categoryData.categories.forEach((category) => {
         idbPromise('categories', 'put', category);
       });
     } else if (!loading) {
       idbPromise('categories', 'get').then((categories) => {
-        let sortedCategories = categories.sort((a, b) => a._id - b._id);
         dispatch({
           type: UPDATE_CATEGORIES,
-          categories: sortedCategories,
+          categories: categories,
         });
       });
     }
