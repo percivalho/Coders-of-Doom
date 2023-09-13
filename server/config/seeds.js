@@ -320,14 +320,14 @@ db.once('open', async () => {
     ]
   });
 
-  await User.create({
+  /*await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345'
   });
 
-  console.log('users seeded');
+  console.log('users seeded');*/
 
   process.exit();
 });
