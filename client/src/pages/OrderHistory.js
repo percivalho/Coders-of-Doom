@@ -35,7 +35,7 @@ function OrderHistory() {
                         <p>{name}</p>
                       </Link>
                       <div>
-                        <span>${price}</span>
+                        <span>£{price}</span>
                       </div>
                     </div>
                   ))}
