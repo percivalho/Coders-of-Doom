@@ -158,6 +158,7 @@ input:focus {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  height: 100vh;
 }
 
 .flex-row {
