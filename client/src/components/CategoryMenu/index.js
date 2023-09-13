@@ -4,6 +4,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
+  UPDATE_HERO_IMAGE
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
@@ -41,6 +42,21 @@ function CategoryMenu() {
     });
   };
 
+  const handleImageChange = (id) => {
+    // Find the category using the provided ID
+    const category = categories.find(cat => cat._id === id);
+    if (category) {
+      const selectedImage = category.image;
+      if (selectedImage) {
+        dispatch({
+          type: UPDATE_HERO_IMAGE,
+          image: `../images/${selectedImage}`
+        });
+      }
+    }
+  };
+
+
   return (
     <div>
       <h2>Explore by Category:</h2>
@@ -49,6 +65,7 @@ function CategoryMenu() {
           key={item._id}
           onClick={() => {
             handleClick(item._id);
+            handleImageChange(item._id);
           }}
         >
           {item.name}

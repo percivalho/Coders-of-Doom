@@ -2,7 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+import { UPDATE_CURRENT_CATEGORY, UPDATE_HERO_IMAGE } from '../../utils/actions';
 
 function Nav() {
 
@@ -13,6 +13,11 @@ function Nav() {
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: ''
+    });
+    // Reset the hero image
+    dispatch({
+      type: UPDATE_HERO_IMAGE,
+      image: "/images/HomeScreen6.jpg"
     });
   };
 

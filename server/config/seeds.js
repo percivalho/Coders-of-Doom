@@ -5,13 +5,34 @@ db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Cardio Equipment' },
-    { name: 'Strength Training' },
-    { name: 'Yoga' },
-    { name: 'Fitness Tech' },
-    { name: 'Nutritional Supplements' },
-    { name: 'Boxing & Martial Arts' },
-    { name: 'Fitness for Kids' }
+    {
+      name: 'Cardio Equipment',
+      image: 'cardio.jpg'
+    },
+    {
+      name: 'Strength Training',
+      image: 'strength.jpg'
+    },
+    {
+      name: 'Yoga',
+      image: 'yoga.jpg',
+    },
+    {
+      name: 'Fitness Tech',
+      image: 'tech.jpg'
+    },
+    {
+      name: 'Nutritional Supplements',
+      image: 'supplements.jpg'
+    },
+    {
+      name: 'Boxing & Martial Arts',
+      image: 'boxing.jpg'
+    },
+    {
+      name: 'Fitness for Kids',
+      image: 'kid.jpg'
+    }
   ]);
 
   console.log('categories seeded');

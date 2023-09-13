@@ -8,7 +8,8 @@ import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  UPDATE_HERO_IMAGE
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -78,6 +79,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentCategory: action.currentCategory
+      }
+    case UPDATE_HERO_IMAGE:
+      return {
+        ...state,
+        currentHeroImage: action.image
       }
 
     default:
