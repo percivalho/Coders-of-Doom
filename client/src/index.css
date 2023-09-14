@@ -106,6 +106,10 @@ header a {
   color: #ABF688;
 }
 
+header ul{
+  list-style-type: none;
+}
+
 button {
   font-size: 1rem;
   text-decoration: none;
@@ -239,7 +243,6 @@ input:focus {
   font-style: italic;
 }
 
-
 .error-text {
   color: var(--error);
 }
@@ -248,7 +251,6 @@ input:focus {
 .slick-next:before {
   color: #ABF688;
   opacity: none;
-
 }
 
 .hero-image {

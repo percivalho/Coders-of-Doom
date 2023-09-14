@@ -12,8 +12,6 @@ import { generateEmailTemplate } from '../../utils/emailTemplate';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-// TODO: Add a comment describing the functionality of loadStripe
-// Your comment here
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 let inactivityTimer; // for abondoned Cart
@@ -62,8 +60,6 @@ const Cart = () => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const [emailSent, setEmailSent] = useState(false);
 
-  // TODO: Add a comment describing the functionality of the useEffect hook in this instance
-  // Your comment here
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -72,8 +68,6 @@ const Cart = () => {
     }
   }, [data]);
 
-  // TODO: Add a comment describing what data we are watching and what work should be preformed if that data changes
-  // Your comment here
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
@@ -111,8 +105,6 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  // TODO: Add a comment describing the functionality of our submitCheckout function.
-  // Your comment here
   function submitCheckout() {
     const productIds = [];
 
@@ -142,7 +134,7 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2>Shopping Basket</h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
@@ -161,10 +153,7 @@ const Cart = () => {
         </div>
       ) : (
         <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
-          You haven't added anything to your cart yet!
+          You haven't added anything to your basket yet!
         </h3>
       )}
     </div>
