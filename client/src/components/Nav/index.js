@@ -63,10 +63,12 @@ function Nav() {
           <img src="/images/Logo.png" alt="Logo" width="200" height="auto" />
         </Link>
       </h1>
-
       <nav>
         {showNavigation()}
       </nav>
+      <div className="contact">Contact Us:
+      <p> Tel: 0123456789</p>
+      </div>
     </header>
   );
 }

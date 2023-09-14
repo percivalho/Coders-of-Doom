@@ -278,6 +278,10 @@ input:focus {
   color: black;
   margin-top: 60px;
 }
+.contact{
+  color: #ABF688;
+  margin-left: 1300px;
+}
 
 @media screen and (max-width: 768px) {
   .card {
