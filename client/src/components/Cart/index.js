@@ -61,6 +61,9 @@ const Cart = () => {
   const [emailSent, setEmailSent] = useState(false);
 
   useEffect(() => {
+    console.log("data");
+    console.log(data);
+    alert(data);
     if (data) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
