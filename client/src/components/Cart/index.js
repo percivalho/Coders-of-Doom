@@ -19,9 +19,8 @@ let inactivityTimer; // for abondoned Cart
 function handleAbandonedCart(state, emailSentRef) {
   if (state.cart.length > 0) {
     if (Auth.loggedIn()) {
-      console.log("abandoned Cart for 10s");
+      //console.log("abandoned Cart for 10s");
       const decoded = Auth.decode(Auth.getToken());
-      //console.log(decoded);
       const emailHTML = generateEmailTemplate(decoded.data.firstName);
 
       // EmailJS configurations
@@ -42,7 +41,6 @@ function handleAbandonedCart(state, emailSentRef) {
         user_id: apikey,
         template_params: templateParams
       };
-      //console.log(data);
       fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -57,19 +55,21 @@ function handleAbandonedCart(state, emailSentRef) {
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [getCheckout, { data, error }] = useLazyQuery(QUERY_CHECKOUT);
   const [emailSent, setEmailSent] = useState(false);
 
   useEffect(() => {
-    console.log("data");
-    console.log(data);
-    alert(data);
     if (data) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
       });
     }
   }, [data]);
+  useEffect(() => {
+    if (error) {
+      console.error("Error during checkout:", error.message);
+    }
+  }, [error]);
 
   useEffect(() => {
     async function getCart() {
@@ -109,7 +109,6 @@ const Cart = () => {
   }
 
   function submitCheckout() {
-    console.log("checkout!!")
     const productIds = [];
 
     state.cart.forEach((item) => {
