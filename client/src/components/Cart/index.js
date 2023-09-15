@@ -106,6 +106,7 @@ const Cart = () => {
   }
 
   function submitCheckout() {
+    console.log("checkout!!")
     const productIds = [];
 
     state.cart.forEach((item) => {
