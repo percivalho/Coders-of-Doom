@@ -7,31 +7,38 @@ db.once('open', async () => {
   const categories = await Category.insertMany([
     {
       name: 'Cardio Equipment',
-      image: 'cardio.jpg'
+      image: 'cardio.jpg',
+      quote: '"Let your heart race, let your soul catch up."'
     },
     {
       name: 'Strength Training',
-      image: 'strength.jpg'
+      image: 'strength.jpg',
+      quote: '"Build strength outside, build character inside."'
     },
     {
       name: 'Yoga',
       image: 'yoga.jpg',
+      quote: '"Breathe deep, find peace and stretch beyond your limits."'
     },
     {
       name: 'Fitness Tech',
-      image: 'tech.jpg'
+      image: 'tech.jpg',
+      quote: '"Empower your fitness journey with the right tech."'
     },
     {
       name: 'Nutritional Supplements',
-      image: 'supplements.jpg'
+      image: 'supplements.jpg',
+      quote: '"Boost your body, power your progress."'
     },
     {
       name: 'Boxing & Martial Arts',
-      image: 'boxing.jpg'
+      image: 'boxing.jpg',
+      quote: '"Discipline, respect, and power - the martial way."'
     },
     {
       name: 'Fitness for Kids',
-      image: 'kid.jpg'
+      image: 'kid.jpg',
+      quote: '"Active kids today lead to a healthier tomorrow."'
     }
   ]);
 
@@ -300,7 +307,523 @@ db.once('open', async () => {
       image: 'jumping-rope.jpg',
       price: 29.99,
       quantity: 50
+    },
+    {
+      name: 'Exercise Bike',
+      category: categories[0]._id,
+
+      description: 'A stationary bike allowing users to cycle indoors with adjustable resistance to cater to all fitness levels.',
+      image: 'exercisebike.jpg',
+      price: 599.99,
+      quantity: 25
+    },
+    {
+      name: 'Air Bike',
+      category: categories[0]._id,
+      description: 'Combines the features of a stationary bike with moving handles, increasing resistance as you pedal faster.',
+      image: 'airbike.jpg',
+      price: 699.99,
+      quantity: 15
+    },
+    {
+      name: 'Ski Trainer',
+      category: categories[0]._id,
+      description: 'Simulates the cross-country skiing motion, providing a full-body cardiovascular and strength workout.',
+      image: 'skitrainer.jpg',
+      price: 799.99,
+      quantity: 20
+    },
+    {
+      name: 'Jump Rope',
+      category: categories[0]._id,
+      description: 'A simple yet effective tool for a high-intensity cardio workout, promoting agility and endurance.',
+      image: 'jumprope.jpg',
+      price: 19.99,
+      quantity: 100
+    },
+    {
+      name: 'Step Mill',
+      category: categories[0]._id,
+      description: 'Mimics the action of climbing stairs in a revolving manner, great for targeting the legs and glutes.',
+      image: 'stepmill.jpg',
+      price: 1299.99,
+      quantity: 10
+    },
+    {
+      name: 'Arm Ergometer',
+      category: categories[0]._id,
+      description: 'Provides an upper body cardiovascular training, suitable for those seeking a seated workout or with limited lower body mobility.',
+      image: 'armergometer.jpg',
+      price: 549.99,
+      quantity: 20
+    },
+    {
+      name: 'Spin Bike',
+      category: categories[0]._id,
+      description: 'Designed for high-intensity cycle training with a heavy flywheel and resistance adjustments.',
+      image: 'spinbike.jpg',
+      price: 649.99,
+      quantity: 15
+    },
+    {
+      name: 'Recumbent Exercise Bike',
+      category: categories[0]._id,
+      description: 'Offers a seated cardio workout with back support, targeting the leg muscles without putting strain on the lower back.',
+      image: 'recumbentbike.jpg',
+      price: 699.99,
+      quantity: 18
+    },
+    {
+      name: 'Battle Ropes',
+      category: categories[0]._id,
+      description: 'Heavy ropes used for high-intensity interval training, engaging both the arms and core.',
+      image: 'battleropes.jpg',
+      price: 129.99,
+      quantity: 30
+    },
+    {
+      name: 'Plyo Box',
+      category: categories[0]._id,
+      description: 'A platform used for plyometric exercises such as box jumps, enhancing leg strength and cardiovascular endurance.',
+      image: 'plyobox.jpg',
+      price: 89.99,
+      quantity: 25
+    },
+    {
+      name: 'Power Rack',
+      category: categories[1]._id,
+      description: 'A versatile strength training equipment ideal for squats, bench presses, and pull-ups. Provides a safe environment for lifting heavy weights alone.',
+      image: 'powerrack.jpg',
+      price: 999.99,
+      quantity: 10
+    },
+    {
+      name: 'Leg Press Machine',
+      category: categories[1]._id,
+      description: 'Designed to target the quadriceps, hamstrings, and glutes. Offers support to the back while allowing heavy weights to be lifted.',
+      image: 'legpressmachine.png',
+      price: 1499.99,
+      quantity: 8
+    },
+    {
+      name: 'Cable Crossover Machine',
+      category: categories[1]._id,
+      description: 'Features multiple cable pulley settings, allowing for a variety of exercises targeting different muscle groups.',
+      image: 'cablecrossover.jpg',
+      price: 1699.99,
+      quantity: 6
+    },
+    {
+      name: 'Medicine Ball',
+      category: categories[1]._id,
+      description: 'A weighted ball ideal for a variety of strength training exercises, from squats to throws, helping to develop power and coordination.',
+      image: 'medicineball.jpg',
+      price: 49.99,
+      quantity: 30
+    },
+    {
+      name: 'Bench Press',
+      category: categories[1]._id,
+      description: 'A standard strength training equipment designed for chest press exercises, often adjustable to allow for incline and decline variations.',
+      image: 'benchpress.jpg',
+      price: 299.99,
+      quantity: 15
+    },
+    {
+      name: 'Pull-Up Bar',
+      category: categories[1]._id,
+      description: 'Designed for pull-ups and chin-ups, it strengthens the back, shoulders, and arms. Can be wall-mounted or door-mounted.',
+      image: 'pullupbar.jpg',
+      price: 59.99,
+      quantity: 40
+    },
+    {
+      name: 'Pec Deck Machine',
+      category: categories[1]._id,
+      description: 'Targets the chest muscles (pectoralis). Users push the padded levers together using their arms for resistance-based training.',
+      image: 'pecdeck.jpg',
+      price: 1099.99,
+      quantity: 10
+    },
+    {
+      name: 'Squat Machine',
+      category: categories[1]._id,
+      description: 'Offers support during squats, enabling users to lift heavier weights while minimizing the risk of injury.',
+      image: 'squatmachine.jpg',
+      price: 1399.99,
+      quantity: 8
+    },
+    {
+      name: 'Lat Pulldown Machine',
+      category: categories[1]._id,
+      description: 'Strengthens the latissimus dorsi muscles in the back. Users pull a weighted bar down using a cable system.',
+      image: 'latpulldown.jpg',
+      price: 1199.99,
+      quantity: 12
+    },
+    {
+      name: 'Sandbag',
+      category: categories[1]._id,
+      description: 'A versatile training tool filled with sand. Can be lifted, thrown, or used in functional training exercises.',
+      image: 'sandbag.jpg',
+      price: 79.99,
+      quantity: 25
+    },
+    {
+      name: 'Yoga Bolster',
+      category: categories[2]._id,
+      description: 'A firm cushioned support used for comfort in various poses, aiding in deep relaxation and stretching.',
+      image: 'yogabolster.jpg',
+      price: 39.99,
+      quantity: 25
+    },
+    {
+      name: 'Yoga Strap',
+      category: categories[2]._id,
+      description: 'Helps in achieving challenging stretches and maintaining poses, enhancing flexibility and alignment.',
+      image: 'yogastrap.jpg',
+      price: 14.99,
+      quantity: 40
+    },
+    {
+      name: 'Yoga Blanket',
+      category: categories[2]._id,
+      description: 'Provides warmth, comfort, and support in various poses. Can be used as a cushion or to cover oneself during relaxation.',
+      image: 'yogablanket.jpg',
+      price: 24.99,
+      quantity: 30
+    },
+    {
+      name: 'Meditation Cushion',
+      category: categories[2]._id,
+      description: 'Supports the hips and spine during meditation, ensuring comfort during extended sessions.',
+      image: 'meditationcushion.jpg',
+      price: 49.99,
+      quantity: 20
+    },
+    {
+      name: 'Aerial Yoga Hammock',
+      category: categories[2]._id,
+      description: 'A strong, stretchy fabric suspended from the ceiling, allowing for aerial yoga poses and deep stretches.',
+      image: 'aerialhammock.jpg',
+      price: 89.99,
+      quantity: 15
+    },
+    {
+      name: 'Yoga Knee Pad',
+      category: categories[2]._id,
+      description: 'Provides cushioning support for the knees, elbows, and wrists during challenging poses, reducing joint strain.',
+      image: 'yogakneepad.jpg',
+      price: 19.99,
+      quantity: 35
+    },
+    {
+      name: 'Toeless Yoga Socks',
+      category: categories[2]._id,
+      description: 'Offers better grip on the yoga mat, ensuring stability and preventing slips during practice.',
+      image: 'toelesssocks.jpg',
+      price: 12.99,
+      quantity: 50
+    },
+    {
+      name: 'Yoga Gloves',
+      category: categories[2]._id,
+      description: 'Enhances grip on the mat and supports the hands during weight-bearing poses.',
+      image: 'yogagloves.jpg',
+      price: 14.99,
+      quantity: 45
+    },
+    {
+      name: 'Yoga Headband',
+      category: categories[2]._id,
+      description: 'Keeps hair and sweat away from the face, ensuring comfort and focus during practice.',
+      image: 'yogaheadband.jpg',
+      price: 9.99,
+      quantity: 60
+    },
+    {
+      name: 'Acupressure Mat',
+      category: categories[2]._id,
+      description: 'Features thousands of spikes that stimulate pressure points, aiding in relaxation and promoting blood circulation.',
+      image: 'acupressuremat.jpg',
+      price: 29.99,
+      quantity: 25
+    },
+    {
+      name: 'Wireless Earbuds',
+      category: categories[3]._id,
+      description: 'Water-resistant earbuds with extended battery life, perfect for workouts and runs without the hassle of wires.',
+      image: 'wirelessearbuds.jpg',
+      price: 129.99,
+      quantity: 35
+    },
+    {
+      name: 'Virtual Reality Fitness System',
+      category: categories[3]._id,
+      description: 'Immerse yourself in a virtual workout session, combining gaming and exercise into one.',
+      image: 'vrfitsystem.jpg',
+      price: 399.99,
+      quantity: 10
+    },
+    {
+      name: 'Smart Water Bottle',
+      category: categories[3]._id,
+      description: 'Tracks your water intake and syncs with your mobile device, reminding you to stay hydrated.',
+      image: 'smartwaterbottle.jpg',
+      price: 49.99,
+      quantity: 30
+    },
+    {
+      name: 'Digital Jump Rope',
+      category: categories[3]._id,
+      description: 'A modern take on the classic workout tool, this jump rope counts skips, calories burned, and workout duration.',
+      image: 'digitaljumprope.jpg',
+      price: 34.99,
+      quantity: 40
+    },
+    {
+      name: 'Body Fat Analyzer',
+      category: categories[3]._id,
+      description: 'Measure and monitor your body composition, providing insights into body fat, muscle mass, and metabolic rate.',
+      image: 'bodyfatanalyzer.jpg',
+      price: 89.99,
+      quantity: 25
+    },
+    {
+      name: 'Smart Dumbbell Set',
+      category: categories[3]._id,
+      description: 'An adjustable weight set that tracks your sets, reps, and weight, all while syncing data to your smartphone.',
+      image: 'smartdumbbell.jpg',
+      price: 349.99,
+      quantity: 15
+    },
+    {
+      name: 'Posture Corrector Device',
+      category: categories[3]._id,
+      description: 'Wearable tech that vibrates when you slouch, helping improve posture and reduce back pain.',
+      image: 'posturedevice.jpg',
+      price: 79.99,
+      quantity: 40
+    },
+    {
+      name: 'Smart Kettlebell',
+      category: categories[3]._id,
+      description: 'Adjustable weight kettlebell that offers real-time feedback and coaching through an integrated app.',
+      image: 'smartkettleball.jpg',
+      price: 199.99,
+      quantity: 20
+    },
+    {
+      name: 'Creatine Monohydrate',
+      category: categories[4]._id,
+      description: 'Enhances exercise performance, promoting muscle growth and increasing strength. Mix with water or juice for consumption.',
+      image: 'creatine.jpg',
+      price: 29.99,
+      quantity: 50
+    },
+    {
+      name: 'BCAA',
+      category: categories[4]._id,
+      description: 'Supports muscle recovery and reduces muscle soreness. Essential for muscle growth and maintenance.',
+      image: 'bcaa.jpg',
+      price: 34.99,
+      quantity: 45
+    },
+    {
+      name: 'Omega-3 Fish Oil',
+      category: categories[4]._id,
+      description: 'Promotes heart health, supports cognitive functions, and reduces inflammation.',
+      image: 'omega3.jpg',
+      price: 19.99,
+      quantity: 60
+    },
+    {
+      name: 'Vitamin D3',
+      category: categories[4]._id,
+      description: 'Essential for bone health, immune function, and mood regulation. Especially important for those with limited sun exposure.',
+      image: 'vitamind3.jpg',
+      price: 14.99,
+      quantity: 75
+    },
+    {
+      name: 'Magnesium Complex',
+      category: categories[4]._id,
+      description: 'Supports muscle and nerve function, energy production, and aids in muscle relaxation.',
+      image: 'magnesium.jpg',
+      price: 17.99,
+      quantity: 70
+    },
+    {
+      name: 'ZMA (Zinc, Magnesium, Vitamin B6)',
+      category: categories[4]._id,
+      description: 'Enhances sleep quality and supports recovery and muscle growth. Often taken before bed.',
+      image: 'zma.jpg',
+      price: 24.99,
+      quantity: 40
+    },
+    {
+      name: 'Green Superfood Powder',
+      category: categories[4]._id,
+      description: 'A blend of greens, fruits, and veggies to boost your daily intake of essential nutrients.',
+      image: 'greensuperfood.jpg',
+      price: 39.99,
+      quantity: 35
+    },
+    {
+      name: 'Glucosamine & Chondroitin',
+      category: categories[4]._id,
+      description: 'Supports joint health and mobility, especially beneficial for those with active lifestyles.',
+      image: 'glucosamine.jpg',
+      price: 29.99,
+      quantity: 50
+    },
+    {
+      name: 'CLA (Conjugated Linoleic Acid)',
+      category: categories[4]._id,
+      description: 'Aids in fat burning and supports weight management, especially when paired with exercise.',
+      image: 'cla.jpg',
+      price: 26.99,
+      quantity: 45
+    },
+    {
+      name: 'Probiotics',
+      category: categories[4]._id,
+      description: 'Promotes gut health by supporting a balanced microbiome. Essential for digestive health and immune function.',
+      image: 'probiotics.jpg',
+      price: 32.99,
+      quantity: 40
+    },
+    {
+      name: 'Headgear',
+      category: categories[5]._id,
+      description: 'Provides protection for the head during sparring sessions, ensuring safety from punches and kicks.',
+      image: 'headgear.jpg',
+      price: 59.99,
+      quantity: 30
+    },
+    {
+      name: 'Hand Wraps',
+      category: categories[5]._id,
+      description: 'Protects hands and wrists during boxing workouts. Essential for safety when wearing boxing gloves.',
+      image: 'handwraps.jpg',
+      price: 12.99,
+      quantity: 80
+    },
+    {
+      name: 'Focus Mitts',
+      category: categories[5]._id,
+      description: 'Used by trainers for target practice, helping boxers improve their punching speed, accuracy, and technique.',
+      image: 'focusmitts.jpg',
+      price: 45.99,
+      quantity: 50
+    },
+    {
+      name: 'Speed Bag',
+      category: categories[5]._id,
+      description: 'Improves hand-eye coordination and speed. A staple in every boxing gym for skill development.',
+      image: 'speedbag.jpg',
+      price: 79.99,
+      quantity: 35
+    },
+    {
+      name: 'Taekwondo Sparring Gear Set',
+      category: categories[5]._id,
+      description: 'Includes protective gear for the chest, arms, and legs. Essential for safe sparring in Taekwondo.',
+      image: 'taekwondogear.jpg',
+      price: 119.99,
+      quantity: 25
+    },
+    {
+      name: 'Muay Thai Pads',
+      category: categories[5]._id,
+      description: 'Used by trainers for practicing punches, kicks, elbows, and knee strikes. Essential for Muay Thai training.',
+      image: 'muaythaipads.jpg',
+      price: 89.99,
+      quantity: 30
+    },
+
+    {
+      name: 'Grappling Dummy',
+      category: categories[5]._id,
+      description: 'Used for practicing throws, takedowns, and submissions. Essential for Judo and Brazilian Jiu-Jitsu practitioners.',
+      image: 'grapplingdummy.jpg',
+      price: 149.99,
+      quantity: 20
+    },
+    {
+      name: 'Kids’ Balance Beam',
+      category: categories[6]._id,
+      description: 'Designed for children to improve their balance and coordination. A fun way to practice gymnastic routines at home.',
+      image: 'balancebeam.jpg',
+      price: 49.99,
+      quantity: 30
+    },
+    {
+      name: 'Junior Exercise Ball',
+      category: categories[6]._id,
+      description: 'A smaller exercise ball designed for children. Great for a variety of exercises and improving core strength.',
+      image: 'juniorexerciseball.jpg',
+      price: 22.99,
+      quantity: 40
+    },
+    {
+      name: 'Adjustable Hula Hoop',
+      category: categories[6]._id,
+      description: 'A fun way for kids to improve coordination and get a cardio workout. Adjustable size for different age groups.',
+      image: 'hulahoop.jpg',
+      price: 15.99,
+      quantity: 50
+    },
+    {
+      name: 'Children’s Resistance Bands',
+      category: categories[6]._id,
+      description: 'Offering a gentle resistance suitable for kids, these bands are perfect for strength training and flexibility exercises.',
+      image: 'kidsresistancebands.jpg',
+      price: 14.99,
+      quantity: 60
+    },
+    {
+      name: 'Kids’ Exercise Bike',
+      category: categories[6]._id,
+      description: 'A scaled-down stationary bike designed for children. Features adjustable resistance for a customized workout.',
+      image: 'kidsexercisebike.jpg',
+      price: 139.99,
+      quantity: 25
+    },
+
+    {
+      name: 'Kids’ Tug of War Rope',
+      category: categories[6]._id,
+      description: 'A durable rope suitable for children, perfect for team games and building upper body strength.',
+      image: 'tugofwarrope.jpg',
+      price: 29.99,
+      quantity: 35
+    },
+    {
+      name: 'Junior Kettlebell',
+      category: categories[6]._id,
+      description: 'A lightweight kettlebell tailored for children. Ideal for introducing strength training in a safe manner.',
+      image: 'juniorkettleball.jpg',
+      price: 24.99,
+      quantity: 40
+    },
+    {
+      name: 'Kids’ Stepper',
+      category: categories[6]._id,
+      description: 'A mini stepper machine that allows children to mimic stair-climbing movements for a cardio workout.',
+      image: 'kidsstepper.jpg',
+      price: 69.99,
+      quantity: 30
+    },
+    {
+      name: 'Children’s Agility Ladder',
+      category: categories[6]._id,
+      description: 'A training tool designed to enhance speed, agility, and coordination. Perfect for young athletes.',
+      image: 'agilityladder.png',
+      price: 18.99,
+      quantity: 45
     }
+
 
   ]);
 
