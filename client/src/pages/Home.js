@@ -7,7 +7,7 @@ import { useStoreContext } from '../utils/GlobalState';
 const Home = () => {
   const heroImage = '/images/HomeScreen6.jpg';
   const [state,] = useStoreContext();
-  const { currentHeroImage } = state;
+  const { currentHeroImage, currentQuote } = state;
   const [selectedImage, setSelectedImage] = useState(currentHeroImage || heroImage);
   const [isFading, setIsFading] = useState(false);
 
@@ -15,13 +15,13 @@ const Home = () => {
     if (currentHeroImage) {
       setTimeout(() => {
         setIsFading(false);
-      }, 500);
+      }, 100);
     }
   }, [currentHeroImage]);
   return (<>
     <div className={`hero-image ${isFading ? 'fade-out' : ''}`} style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${currentHeroImage || heroImage})` }}>
       <div class="hero-text">
-        <h1>Welcome</h1>
+        <h1 style={{ fontStyle: 'italic' }}>{currentQuote || "Welcome"}</h1>
         <p></p>
       </div>
     </div>

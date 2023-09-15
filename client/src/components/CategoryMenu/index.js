@@ -4,7 +4,8 @@ import { useStoreContext } from '../../utils/GlobalState';
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-  UPDATE_HERO_IMAGE
+  UPDATE_HERO_IMAGE,
+  UPDATE_CURRENT_QUOTE
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
@@ -47,10 +48,18 @@ function CategoryMenu() {
     const category = categories.find(cat => cat._id === id);
     if (category) {
       const selectedImage = category.image;
+      const selectedQuote = category.quote;
+
       if (selectedImage) {
         dispatch({
           type: UPDATE_HERO_IMAGE,
           image: `../images/${selectedImage}`
+        });
+      }
+      if (selectedQuote) {
+        dispatch({
+          type: UPDATE_CURRENT_QUOTE,
+          quote: selectedQuote
         });
       }
     }

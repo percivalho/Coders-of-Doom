@@ -12,6 +12,11 @@ const categorySchema = new Schema({
     type: String,
     required: true,
     trim: true
+  },
+  quote: {
+    type: String,
+    required: true,
+    trim: true
   }
 });
 

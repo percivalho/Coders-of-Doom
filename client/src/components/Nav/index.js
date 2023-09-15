@@ -2,7 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_CURRENT_CATEGORY, UPDATE_HERO_IMAGE } from '../../utils/actions';
+import { UPDATE_CURRENT_CATEGORY, UPDATE_HERO_IMAGE, UPDATE_CURRENT_QUOTE } from '../../utils/actions';
 
 function Nav() {
 
@@ -18,6 +18,10 @@ function Nav() {
     dispatch({
       type: UPDATE_HERO_IMAGE,
       image: "/images/HomeScreen6.jpg"
+    });
+    dispatch({
+      type: UPDATE_CURRENT_QUOTE,
+      quote: ''
     });
   };
 
@@ -67,7 +71,7 @@ function Nav() {
         {showNavigation()}
       </nav>
       <div className="contact">Contact Us:
-      <p> Tel: 0123456789</p>
+        <p> Tel: 0123456789</p>
       </div>
     </header>
   );
