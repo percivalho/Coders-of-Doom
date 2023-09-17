@@ -61,7 +61,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
+    < header className="flex-row header-content px-1" >
       <h1>
         <Link to="/" onClick={handleShopLinkClick}>
           <img src="/images/Logo.png" alt="Logo" width="200" height="auto" />
