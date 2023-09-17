@@ -22,21 +22,29 @@ Fitness Direct is a fullstack application created to provide users a way to shop
 Implementing technologies like React, GraphQL with Node.js and Express.js server to create a unique interface, Fitness Direct was originally developed to support all users through their fitness journey. Shopping for fitness accesories can be overwhelming, whether you are a beginner or a seasoned athlete, Fitness Direct uses a bright, engaging and user friendly interface to cater to all. Met with an extensive product catalog, users can browse and checkout securely and achieve their fitness goals with Fitness Direct.
 
 # User-story
-- AS A USER
-- I WANT to create an account and shop for fitness products
-- SO THAT I can look for items in my selected category
+```md
+AS A USER
+I WANT to create an account and shop for fitness products
+SO THAT I can look for items in my selected category
+```
 
 # Acceptance-criteria
-- GIVEN use of Fitness Direct
-- WHEN user is presented with the homepage
-- THEN they are able to view the different shopping categories
-- WHEN clicking or viewing an item, user is able to able to add to shopping cart
-- THEN user is able to view and edit (remove or increase item number) items in shoping cart
-- WHEN new user signs up to Fitness Direct
-- THEN user is able to login and checkout with those details
-- WHEN exisiting user abandons cart
-- THEN user is sent an email to complete checkout
 
+```md
+GIVEN use of Fitness Direct
+WHEN user is presented with the homepage
+THEN they are able to view the different shopping categories
+WHEN clicking or viewing an item, user is able to able to add to shopping cart
+THEN user is able to view and edit (remove or increase item number) items in shoping cart
+WHEN new user signs up to Fitness Direct
+THEN user is able to login and checkout with those details
+WHEN exisiting user abandons cart
+THEN user is sent an email to complete checkout
+WHEN user checkouts on the the shopping basket
+THEN they are able to checkout using stripe interface
+WHEN the payment is successful
+THEN the order will be appeared in order history and the quantity of stocks will be reduced
+```
 
 # Project-features
 - Extensive Product Catalog: Browse through a selection of fitness equipment, from cardio machines to strength training gear, yoga accessories, and more. 
@@ -56,9 +64,15 @@ Implementing technologies like React, GraphQL with Node.js and Express.js server
 
 
 # Links
-- Link to deployed application: https://coders-of-doom-c91c338dc92f.herokuapp.com/
-- Link to GitHub Repository: https://github.com/percivalho/Coders-of-Doom.git
+```md
+Link to deployed application: 
 
+https://coders-of-doom-c91c338dc92f.herokuapp.com/
+
+Link to GitHub Repository: 
+
+https://github.com/percivalho/Coders-of-Doom.git
+```
 
 # Contributors
 Team contributors:
